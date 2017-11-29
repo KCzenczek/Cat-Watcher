@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block header %}
+    <h1>History of the detected movments</h1>
+{% endblock header %}
+
+{% block content %}
+    <form action='/delete_history' method='POST'>
+        <p>
+            {% for data in history[1::] | reverse %}
+                {{loop.index}}. {{ data }} <br/>
+            {% endfor %}
+        </p>
+        <h3>
+            Are you sure to delete the history?
+        </h3>
+        <button type='submit' name='delete_history' value='deleting'>Delete</button>
+    </form>
+{% endblock content %}
+

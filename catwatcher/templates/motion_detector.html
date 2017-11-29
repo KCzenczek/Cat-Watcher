@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block header %}
+    <h1>State of PIR motion detector</h1>
+{% endblock header %}
+
+{% block content %}
+    <p>
+        {{ message }} <br/>
+        {{ history[-1] }}
+    </p>
+    <h3>
+        Check the history of the detected movements<br/> or delete it
+    </h3>
+    <a href='{{ url_for('check_history') }}' class='btn' role='button' name='show_history' value='show_history'>
+        Check
+    </a><br/>
+    <a href='{{ url_for('delete_history') }}' class='btn' role='button' name='delete_history' value='delete_history'>
+        Delete
+    </a>
+{% endblock content %}
+

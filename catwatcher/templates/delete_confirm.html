@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block header %}
+    <h1> {{ message }}</h1>
+{% endblock header %}
+
+{% block content %}
+    <h3>
+        Go back to main page <br/>
+    </h3>
+    <a href='{{ url_for('catwatcher') }}' class='btn' role='button'>
+        Go back
+    </a>
+{% endblock content %}
+

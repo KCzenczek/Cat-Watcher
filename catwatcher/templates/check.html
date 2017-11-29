@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block header %}
+    <h1>History of the detected movments</h1>
+{% endblock header %}
+
+{% block content %}
+    <p>
+        {% for data in history[1::] | reverse %}
+            {{loop.index}}. {{ data }} <br/>
+        {% endfor %}
+    </p>
+    <h3>
+        Go back to main page <br/>
+        or <br/>
+        Check the latest detected movement <br/>
+        or <br/>
+        Delete the history of the detected movements
+    </h3>
+    <a href='{{ url_for('catwatcher') }}' class='btn' role='button'>
+        Go back
+    </a><br/>
+    <a href='{{ url_for('motion_detector') }}' class='btn' role='button'>
+        Latest movment
+    </a><br/>
+    <a href='{{ url_for('delete_history') }}' class='btn' role='button'>
+        Delete
+    </a>
+{% endblock content %}
+
+
