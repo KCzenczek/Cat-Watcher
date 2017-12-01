@@ -1,14 +1,10 @@
 from flask import Flask, render_template, request
-# from flask_bootstrap import Bootstrap - does not want to work :( 
-# TO DO: deal with that later 
 import RPi.GPIO as GPIO
 import curses
 import time
 from datetime import datetime
 
 app = Flask(__name__)
-# bootstrap = Bootstrap(app)
-
 
 GPIO.setmode(GPIO.BOARD)
 
@@ -38,39 +34,51 @@ def catwatcher():
     return render_template('main.html', **template_data)
 
 
-@app.route('/rover_camera')
+@app.route('/rover_camera', methods=['GET', 'POST'])
 def rover_camera():
-    stdscr = curses.initscr()	# curses initialization
-    curses.noecho()				# to turn-off echoing of keybord to screen
-    curses.cbreak()				# no waiting key response
-    stdscr.keypad(True)			# spciecial values for cursor keys - keypad mode
-   	# halfdelay(3)
+    if request.method == 'GET':
+        template_data ={
+        'title': 'rover_camera',
+        }
     
-    while True:
-        c = stdscr.getch()
+        return render_template('rover_start.html', **template_data)
+        
+    elif request.method == 'POST':
+        if request.form['rover_start'] == 'start':
+    
+            stdscr = curses.initscr()	# curses initialization
+            curses.noecho()		# to turn-off echoing of keybord to screen
+            curses.cbreak()		# no waiting key response
+            stdscr.keypad(True)		# spciecial values for cursor keys - keypad mode
+                       
+            while True:
+                c = stdscr.getch()
 
-        if c == ord('q'):
-            break
+                if c == ord('q'):
+                    break
 
-        elif c == ord('s'):
-            GPIO.output(list_F, GPIO.LOW)
-            GPIO.output(list_B, GPIO.LOW)
-            GPIO.output(list_L, GPIO.LOW)
-            GPIO.output(list_R, GPIO.LOW)
+                elif c == ord('s'):
+                    GPIO.output(list_F, GPIO.LOW)
+                    GPIO.output(list_B, GPIO.LOW)
+                    GPIO.output(list_L, GPIO.LOW)
+                    GPIO.output(list_R, GPIO.LOW)
 
-        elif c == curses.KEY_UP:
-            GPIO.output(list_F, GPIO.HIGH)
+                elif c == curses.KEY_UP:
+                    GPIO.output(list_F, GPIO.HIGH)
 
-        elif c == curses.KEY_DOWN:
-            GPIO.output(list_B, GPIO.HIGH)
+                elif c == curses.KEY_DOWN:
+                    GPIO.output(list_B, GPIO.HIGH)
 
-        elif c == curses.KEY_LEFT:
-            GPIO.output(list_L, GPIO.HIGH)
+                elif c == curses.KEY_LEFT:
+                    GPIO.output(list_L, GPIO.HIGH)
 
-        elif c == curses.KEY_RIGHT:
-            GPIO.output(list_R, GPIO.HIGH)
+                elif c == curses.KEY_RIGHT:
+                    GPIO.output(list_R, GPIO.HIGH)
 
-		# return 'I am cathing the cat'
+            curses.nocbreak()   
+            stdscr.keypad(False)
+
+            return render_template('rover_end.html')
 
 
 @app.route('/motion_detector')
@@ -130,11 +138,7 @@ def delete_history():
 if __name__ == '__main__':
     app.run('0.0.0.0', port=80, debug=True)
    
-    
-    curses.nocbreak()   		# to leave halfdelay mode
-    stdscr.keypad(False)
     curses.echo()
     curses.endwin()
 
     GPIO.cleanup()
-
