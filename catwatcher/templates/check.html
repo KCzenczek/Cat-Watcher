@@ -13,14 +13,14 @@
         {% for data in history[1::] | reverse %}
             {{loop.index}}. {{ data }} <br/>
         {% endfor %}
-    </p>
-    <h3>
+    </p></br>
+    <h4>
         Go back to main page <br/>
         or <br/>
         Check the latest detected movement <br/>
         or <br/>
         Delete the history of the detected movements
-    </h3>
+    </h4></br>
     <a href='{{ url_for('catwatcher') }}' class='btn' role='button'>
         Go back
     </a><br/>

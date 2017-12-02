@@ -14,10 +14,10 @@
             {% for data in history[1::] | reverse %}
                 {{loop.index}}. {{ data }} <br/>
             {% endfor %}
-        </p>
-        <h3>
+        </p></br>
+        <h4>
             Are you sure to delete the history?
-        </h3>
+        </h4></br>
         <button type='submit' name='delete_history' value='deleting'>Delete</button>
     </form>
 {% endblock content %}
