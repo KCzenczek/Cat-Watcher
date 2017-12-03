@@ -5,19 +5,17 @@
 {% endblock title %}
 
 {% block header %}
-    <h1>History of the detected movments</h1>
+    <h1>History of the detected movments</h1></br>
 {% endblock header %}
 
 {% block content %}
     <form action='/delete_history' method='POST'>
-        <p>
+        <h4>
             {% for data in history[1::] | reverse %}
                 {{loop.index}}. {{ data }} <br/>
             {% endfor %}
-        </p></br>
-        <h4>
-            Are you sure to delete the history?
         </h4></br>
+        <h3>Are you sure to delete the history?</h3></br>
         <button type='submit' name='delete_history' value='deleting'>Delete</button>
     </form>
 {% endblock content %}

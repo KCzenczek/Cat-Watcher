@@ -5,15 +5,17 @@
 {% endblock title %}
 
 {% block header %}
-    <h1> {{ message }}</h1>
+    <h1> {{ message }}</h1></br>
 {% endblock header %}
 
 {% block content %}
-    <h3>
-        Go back to main page <br/>
-    </h3>
-    <a href='{{ url_for('catwatcher') }}' class='btn' role='button'>
-        Go back
-    </a>
+    <div class='row'>
+        <div class='col-lg-4'>
+            <p>Go back to main page</p>
+            <a href='{{ url_for('catwatcher') }}' class='btn' role='button'>
+                Go back
+            </a>
+        </div>
+    </div>
 {% endblock content %}
 
