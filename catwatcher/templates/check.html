@@ -5,32 +5,36 @@
 {% endblock title %}
 
 {% block header %}
-    <h1>History of the detected movments</h1></br>
+    <div class='text-center'>
+        <h1><p class='bg-primary'>History of the detected movments</p></h1></br>
+    </div>
 {% endblock header %}
 
 {% block content %}
-    <h4>
-        {% for data in history[1::] | reverse %}
-            {{loop.index}}. {{ data }} <br/>
-        {% endfor %}
-    </h4></br>
+     <div class='text-info'>
+            <h4>
+                {% for data in history | reverse %}
+                    {{loop.index}}. {{ data }} <br/>
+                {% endfor %}
+            </h4></br>
+        </div>
     <h3>What to do next:</h3></br>
     <div class='row'>
         <div class='col-lg-4'>
             <p>Go back to main page</p>
-            <a href='{{ url_for('catwatcher') }}' class='btn' role='button'>
+            <a href='{{ url_for('catwatcher') }}' class='btn btn-default' role='button'>
                 Go back
             </a>
         </div>
         <div class='col-lg-4'>
             <p>Check the latest movement</p>
-            <a href='{{ url_for('motion_detector') }}' class='btn' role='button'>
+            <a href='{{ url_for('motion_detector') }}' class='btn btn-default' role='button'>
                 Latest movment
             </a>
         </div>
         <div class='col-lg-4'>
             <p>Delete the history</p>
-            <a href='{{ url_for('delete_history') }}' class='btn' role='button'>
+            <a href='{{ url_for('delete_history') }}' class='btn btn-default' role='button'>
                 Delete
             </a>
         </div>

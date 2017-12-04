@@ -5,15 +5,18 @@
 {% endblock title %}
 
 {% block header %}
-    <h1>Click button to start engine :)</h1>
+     <div class='text-center'>
+        <h1><p class='bg-primary'>Click button to start engine :)</p></h1>
+    </div>
 {% endblock header %}
 
 {% block content %}
-    <h3>Small hint: move cursor to terminal</h3></br>
+    </br></br>
     <form action='/rover_camera' method='POST'>
-       <button type='submit' name='rover_start' value='start'>Start rover</button>
+       <button type='submit' class='btn btn-primary' name='rover_start' value='start'>Start rover</button>
     </form>
     </br>
-    <h4>One more: to stop engine press 'q' on keyboard</h4>
+    <h3>...and move cursor to terminal</h3></br>
+    <h4><p class='text-primary'>One more: to stop engine press 'q' on keyboard</p></h4>
 {% endblock content %}
 

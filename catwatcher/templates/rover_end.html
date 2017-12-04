@@ -5,7 +5,9 @@
 {% endblock title %}
 
 {% block header %}
-    <h1>I've finished following cat</h1>
+    <div class='text-center'>
+        <h1><p class='bg-primary'>I've finished following cat</p></h1>
+    </div>
 {% endblock header %}
 
 {% block content %}
@@ -13,7 +15,7 @@
     <div class='row'>
         <div class='col-lg-4'>
             <p>Go back to main page</p>
-            <a href='{{ url_for('catwatcher') }}' class='btn' role='button'>
+            <a href='{{ url_for('catwatcher') }}' class='btn btn-default' role='button'>
                 Go back
             </a>
         </div>
