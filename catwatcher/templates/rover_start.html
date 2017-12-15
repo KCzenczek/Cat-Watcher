@@ -13,10 +13,15 @@
 {% block content %}
     </br></br>
     <form action='/rover_camera' method='POST'>
-       <button type='submit' class='btn btn-primary' name='rover_start' value='start'>Start rover</button>
+        <button type='submit' class='btn btn-primary btn-lg' name='rover_start' value='start'>
+            <span class='glyphicon glyphicon-off' aria-hidden='true'></span>
+            Start rover
+        </button>
     </form>
     </br>
     <h3>...and move cursor to terminal</h3></br>
+    <h3><p class='text-primary'>I am watching you!</p></h3><br>
+    <iframe src='http://192.168.0.11:8000/index.html' width="640" height="480"></iframe><br>
     <h4><p class='text-primary'>One more: to stop engine press 'q' on keyboard</p></h4>
 {% endblock content %}
 

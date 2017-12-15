@@ -13,28 +13,31 @@
 {% block content %}
      <div class='text-info'>
             <h4>
-                {% for data in history | reverse %}
+                {% for data in history[1::] | reverse %}
                     {{loop.index}}. {{ data }} <br/>
                 {% endfor %}
             </h4></br>
         </div>
     <h3>What to do next:</h3></br>
     <div class='row'>
-        <div class='col-lg-4'>
+        <div class='col-md-4'>
             <p>Go back to main page</p>
-            <a href='{{ url_for('catwatcher') }}' class='btn btn-default' role='button'>
+            <a href='{{ url_for('catwatcher') }}' class='btn btn-primary btn-lg' role='button'>
+                <span class='glyphicon glyphicon-home' aria-hidden='true'></span>
                 Go back
             </a>
         </div>
-        <div class='col-lg-4'>
+        <div class='col-md-4'>
             <p>Check the latest movement</p>
-            <a href='{{ url_for('motion_detector') }}' class='btn btn-default' role='button'>
+            <a href='{{ url_for('motion_detector') }}' class='btn btn-primary btn-lg' role='button'>
+                <span class='glyphicon glyphicon-file' aria-hidden='true'></span>
                 Latest movment
             </a>
         </div>
-        <div class='col-lg-4'>
+        <div class='col-md-4'>
             <p>Delete the history</p>
-            <a href='{{ url_for('delete_history') }}' class='btn btn-default' role='button'>
+            <a href='{{ url_for('delete_history') }}' class='btn btn-primary btn-lg' role='button'>
+                <span class='glyphicon glyphicon-trash' aria-hidden='true'></span>
                 Delete
             </a>
         </div>

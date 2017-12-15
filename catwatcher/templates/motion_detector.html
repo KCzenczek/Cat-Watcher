@@ -14,15 +14,17 @@
     <h3>{{ message }} </h3>
     <h4>{{ history[-1] }}</h4></br>
     <div class='row'>
-        <div class='col-lg-4'>
+        <div class='col-md-4'>
             <p>Check the history</p>
-            <a href='{{ url_for('check_history') }}' class='btn btn-default' role='button' name='show_history' value='show_history'>
+            <a href='{{ url_for('check_history') }}' class='btn btn-primary btn-lg' role='button'>
+                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span>
                 Check
-            </a>
+            </a> 
         </div>
-        <div class='col-lg-4'>
+        <div class='col-md-4'>
             <p>Delete the history</p>
-            <a href='{{ url_for('delete_history') }}' class='btn btn-default' role='button' name='delete_history' value='delete_history'>
+            <a href='{{ url_for('delete_history') }}' class='btn btn-primary btn-lg' role='button'>
+                <span class='glyphicon glyphicon-trash' aria-hidden='true'></span>
                 Delete
             </a>
         </div>

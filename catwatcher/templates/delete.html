@@ -14,13 +14,16 @@
     <form action='/delete_history' method='POST'>
         <div class='text-info'>
             <h4>
-                {% for data in history | reverse %}
+                {% for data in history[1::] | reverse %}
                     {{loop.index}}. {{ data }} <br/>
                 {% endfor %}
             </h4></br>
         </div>
         <h3>Are you sure to delete the history?</h3></br>
-        <button type='submit' class='btn btn-primary' name='delete_history' value='deleting'>Delete</button>
+        <button type='submit' class='btn btn-primary btn-lg' name='delete_history' value='deleting'>
+            <span class='glyphicon glyphicon-alert' aria-hidden='true'></span>
+            Delete
+        </button>
     </form>
 {% endblock content %}
 
